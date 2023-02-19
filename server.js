@@ -23,6 +23,7 @@ app.use("/api/chat", chatRouter);
 app.use("/api/message", messageRouter);
 app.use("/api/profile", profileRouter);
 app.use("/api/project", projectRouter);
+
 app.use(ErrorHandler);
 
 const APP_PORT = process.env.APP_PORT || 3000;

@@ -1,7 +1,12 @@
 const express = require("express");
 const verifyToken = require("../middleware/verifyToken");
 const CreateProjectControllers = require("../controllers/CreateProjectControllers");
+const UpdateProjectControllers = require("../controllers/UpdateProjectControllers");
+const FetchSingleProjectControllers = require("../controllers/FetchSingleProjectControllers");
+const DeleteSingleProjectControllers = require("../controllers/DeleteProjectControllers");
 const router = express.Router();
 router.post("/", verifyToken, CreateProjectControllers);
-
+router.put("/", verifyToken, UpdateProjectControllers);
+router.get("/:id", FetchSingleProjectControllers);
+router.delete("/:id", verifyToken, DeleteSingleProjectControllers);
 module.exports = router;
