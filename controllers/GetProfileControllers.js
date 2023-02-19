@@ -11,10 +11,9 @@ const AllUsers = async (req, res, next) => {
     : {};
 
   try {
-    const profiles = await Profile.find(keyword).find({
+    let profiles = await Profile.find(keyword).find({
       userId: { $ne: req.user._id },
     });
-    // const users = await User.find(keyword);
 
     res.json(profiles).status(201);
   } catch (err) {
