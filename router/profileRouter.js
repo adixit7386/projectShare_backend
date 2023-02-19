@@ -1,6 +1,10 @@
 const express = require("express");
 const verifyToken = require("../middleware/verifyToken");
 const CreateProfileControllers = require("../controllers/CreateProfileControllers");
+const UpdateProfileControllers = require("../controllers/UpdateProfileControllers");
+const GetProfileControllers = require("../controllers/GetProfileControllers");
 const router = express.Router();
 router.post("/", verifyToken, CreateProfileControllers);
+router.put("/", verifyToken, UpdateProfileControllers);
+router.get("/", verifyToken, GetProfileControllers);
 module.exports = router;
