@@ -8,18 +8,18 @@ const profileSchema = new mongoose.Schema(
     status: { type: String, required: true },
     description: { type: String, required: true },
 
-    dob: {
-      date: { type: Date, required: true },
-      visibility: { type: String, default: "public" },
-    },
-    email: {
-      id: { type: String, required: true },
-      visibility: { type: String, default: "public" },
-    },
-    contact: {
-      number: { type: String, required: true },
-      visibility: { type: String, default: "public" },
-    },
+    // dob: {
+    //   date: { type: Date, required: true },
+    //   visibility: { type: String, default: "private" },
+    // },
+    // email: {
+    //   id: { type: String, required: true },
+    //   visibility: { type: String, default: "private" },
+    // },
+    // contact: {
+    //   number: { type: String, required: true },
+    //   visibility: { type: String, default: "private" },
+    // },
     education: [
       {
         title: { type: String, required: true },
