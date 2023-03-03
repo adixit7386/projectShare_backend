@@ -8,6 +8,7 @@ const debugMode = process.env.DEBUG_MODE;
 
 const errorHandler = (err, req, res, next) => {
   let statusCode = 500;
+
   let data = {
     message: "internal server error",
     ...(debugMode === "true" && { originalError: err.message }),
