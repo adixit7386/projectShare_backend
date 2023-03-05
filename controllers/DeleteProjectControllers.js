@@ -4,7 +4,8 @@ const Project = require("../models/Project");
 const DeleteSingleProjectControllers = async (req, res, next) => {
   try {
     let singleProject = await Project.findById(req.params.id);
-    if (singleProject.projectAdmin === req.user._id) {
+
+    if (singleProject.projectAdmin.toString() !== req.user._id) {
       return next(
         customErrorHandler.unAuthorized(
           "you are not authorized to complete this action"

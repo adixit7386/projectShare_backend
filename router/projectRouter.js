@@ -5,9 +5,11 @@ const UpdateProjectControllers = require("../controllers/UpdateProjectController
 const FetchSingleProjectControllers = require("../controllers/FetchSingleProjectControllers");
 const DeleteSingleProjectControllers = require("../controllers/DeleteProjectControllers");
 const FetchAllProjects = require("../controllers/GetAllProjects");
+const FetchUserProjects = require("../controllers/FetchUserProjects");
 const router = express.Router();
 router.post("/", verifyToken, CreateProjectControllers);
 router.put("/", verifyToken, UpdateProjectControllers);
+router.get("/user", verifyToken, FetchUserProjects);
 router.get("/:id", FetchSingleProjectControllers);
 router.get("/", FetchAllProjects);
 router.delete("/:id", verifyToken, DeleteSingleProjectControllers);

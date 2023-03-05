@@ -32,6 +32,7 @@ const CreateGroupChatControllers = async (req, res, next) => {
 
     res.json(groupChat).status(201);
   } catch (err) {
+    console.log(err);
     return next(err);
   }
 };
