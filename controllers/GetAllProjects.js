@@ -4,18 +4,15 @@ const AllUsers = async (req, res, next) => {
   const keyword = req.query.search
     ? {
         $or: [
-          { title: { $regex: req.query.search, $options: "i" } },
-          { description: { $regex: req.query.search, $options: "i" } },
+          { title: { $regex: req.query.search } },
+          { description: { $regex: req.query.search } },
         ],
       }
     : {};
-
   try {
-    const project = await Project.find(keyword).find({
-      projectAdmin: { $ne: req?.user?._id },
-      visibility: { $eq: "public" },
-    });
-    // const users = await User.find(keyword);
+    let project = req.query.search
+      ? await Project.find(keyword).find({ visibility: { $eq: "public" } })
+      : await Project.find({ visibility: "public" });
 
     res.json(project).status(201);
   } catch (err) {
