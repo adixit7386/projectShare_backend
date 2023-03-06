@@ -21,7 +21,7 @@ const AccessChatControllers = async (req, res, next) => {
   if (isChat != null) {
     isChat = await User.populate(isChat, {
       path: "latestMessage.sender",
-      select: "name pic email",
+      select: "name image email",
     });
     return res.json(isChat).status(201);
   } else {
@@ -33,12 +33,14 @@ const AccessChatControllers = async (req, res, next) => {
 
     try {
       const createdChat = await Chat.create(ChatData);
+
       const FullChat = await Chat.findOne({ _id: createdChat._id }).populate(
         "users",
         "-password"
       );
       return res.json(FullChat).status(201);
     } catch (err) {
+      console.log(err.message);
       return next(err);
     }
   }
