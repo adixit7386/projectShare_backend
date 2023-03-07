@@ -35,7 +35,7 @@ const server = app.listen(
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "https://live-chat-adixit7386.netlify.app",
+    origin: "http://localhost:3000",
   },
 });
 io.on("connection", (socket) => {

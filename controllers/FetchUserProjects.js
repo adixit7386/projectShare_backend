@@ -8,9 +8,7 @@ const FetchUserProjects = async (req, res, next) => {
   try {
     var Projects = await Project.find({
       members: { $elemMatch: { $eq: req.user._id } },
-    })
-      .populate("members", "-password")
-      .populate("projectAdmin", "-password");
+    }).populate("members", "-password");
 
     return res.json(Projects).status(201);
   } catch (error) {
